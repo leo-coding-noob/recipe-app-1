@@ -55,21 +55,17 @@ if(isset($_POST['update'])){
         $error = "Error updating recipe!";
     }
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Recipe</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+$page_title = "Edit Recipe";
+$extra_css = ['add-edit'];
+include 'header.php';
+?>
 
 <header>
     <h1>Edit Recipe</h1>
     <nav>
-        <a href="index.php">Home</a>
+        <a href="index.php">Home</a> |
+        <a href="logout.php">Logout</a>
     </nav>
 </header>
 
@@ -90,7 +86,7 @@ if(isset($_POST['update'])){
         <label>Current Image</label><br>
         <?php if($recipe['image']): ?>
             <img src="../uploads/<?= htmlspecialchars($recipe['image']) ?>"
-                 style="width:150px;height:120px;object-fit:cover;border-radius:6px;"><br><br>
+                 class="preview-image"><br><br>
         <?php else: ?>
             <p>No image uploaded</p>
         <?php endif; ?>
@@ -102,9 +98,4 @@ if(isset($_POST['update'])){
     </form>
 </main>
 
-<footer>
-    <p>&copy; 2026 Recipe App</p>
-</footer>
-
-</body>
-</html>
+<?php include 'footer.php'; ?>

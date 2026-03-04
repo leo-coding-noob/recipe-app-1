@@ -1,0 +1,48 @@
+/* home.css - recipe listing */
+main {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+}
+
+#recipeList {
+    list-style: none;
+    padding: 0;
+}
+
+#recipeList li {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--light-gray);
+    transition: var(--transition-normal);
+}
+
+#recipeList li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+#recipeList img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+#recipeList a {
+    font-weight: 600;
+    color: var(--darker);
+    flex: 1;
+}
+
+#recipeList a:hover {
+    color: var(--primary);
+}

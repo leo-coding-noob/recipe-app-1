@@ -20,16 +20,12 @@ if($result->num_rows != 1){
 }
 
 $row = $result->fetch_assoc();
+
+$page_title = htmlspecialchars($row['title']) . " - Recipe Details";
+$extra_css = ['view'];
+include 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><?= htmlspecialchars($row['title']) ?> - Recipe Details</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
 <header>
     <h1>Recipe Details</h1>
     <nav>
@@ -48,6 +44,12 @@ $row = $result->fetch_assoc();
 <main>
     <h2><?= htmlspecialchars($row['title']) ?></h2>
 
+    <?php if(!empty($row['image'])): ?>
+        <img src="../uploads/<?= htmlspecialchars($row['image']) ?>" 
+             alt="<?= htmlspecialchars($row['title']) ?>" 
+             class="recipe-detail-image">
+    <?php endif; ?>
+
     <h3>Ingredients:</h3>
     <ul>
         <?php 
@@ -61,18 +63,16 @@ $row = $result->fetch_assoc();
     <h3>Instructions:</h3>
     <p><?= nl2br(htmlspecialchars($row['instructions'])) ?></p>
 
-    <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $row['user_id']): ?>
-        <a href="edit.php?id=<?= $row['id'] ?>"><button>Edit</button></a>
-        <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?');">
-            <button>Delete</button>
-        </a>
+    <?php if(isset($_SESSION['user_id'])): ?>
+        <div class="recipe-actions">
+            <a href="edit.php?id=<?= $row['id'] ?>"><button>Edit</button></a>
+            <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure?');">
+                <button class="delete-btn">Delete</button>
+            </a>
+        </div>
     <?php endif; ?>
 
-    <a href="index.php"><button>Back to Recipes</button></a>
+    <a href="index.php"><button class="back-btn">Back to Recipes</button></a>
 </main>
 
-<footer>
-    <p>&copy; 2026 Recipe App</p>
-</footer>
-</body>
-</html>
+<?php include 'footer.php'; ?>

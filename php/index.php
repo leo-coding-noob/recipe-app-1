@@ -9,18 +9,11 @@ include 'config.php';
 // Fetch recipes from DB
 $sql = "SELECT * FROM recipes ORDER BY created_at DESC";
 $result = $conn->query($sql);
+
+$page_title = "Recipe App - Home";
+$extra_css = ['home', 'favorites', 'search'];
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Recipe App</title>
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-     <link rel="stylesheet" href="../css/style.css?v=2">
-     <link rel="stylesheet" href="../css/favorites.css?v=2">
-    
-</head>
-<body>
 
 <header>
     <h1>My Recipe App</h1>
@@ -54,7 +47,7 @@ $result = $conn->query($sql);
                         alt="Recipe Image"
                     >
                 <?php else: ?>
-                    <div>No Image</div>
+                    <div class="no-image">No Image</div>
                 <?php endif; ?>
 
                 <!-- Recipe Title -->
@@ -81,7 +74,6 @@ $result = $conn->query($sql);
     <?php endif; ?>
 </ul>
 
-
 <!-- favorite -->
 <h3 class="favorites-heading">⭐ My Favorites</h3>
 <div class="favorites-container" id="favoritesList">
@@ -89,37 +81,4 @@ $result = $conn->query($sql);
 </div>
 </main>
 
-
-    <footer class="recipe-footer">
-    <div class="footer-content">
-        <div class="footer-brand">
-            <h3>Recipe App</h3>
-            <p class="footer-tagline">Cook, save, share your favorite recipes.</p>
-        </div>
-        
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/add-recipe">Add Recipe</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-contact">
-            <h4>Contact</h4>
-            <p class="contact-email">
-                Email: <a href="mailto:contact@recipeapp.com">contact@recipeapp.com</a>
-            </p>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>© 2026 Recipe App. Made with <span class="heart">❤️</span></p>
-    </div>
-</footer>
-
-
-<script src="../js/script.js"></script>
-</body>
-</html>
+<?php include 'footer.php'; ?>

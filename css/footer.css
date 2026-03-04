@@ -1,0 +1,44 @@
+/* footer.css */
+.recipe-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 2rem 0 1rem;
+    margin-top: 3rem;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-brand h3 {
+    color: #e63946;
+    font-size: 1.8rem;
+}
+
+.footer-tagline {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: #343a40;
+    margin-bottom: 1rem;
+}
+
+.footer-links a:hover,
+.contact-email a:hover {
+    color: #e63946;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    color: #6c757d;
+}

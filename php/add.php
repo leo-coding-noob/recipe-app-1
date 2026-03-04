@@ -29,34 +29,40 @@ if(isset($_POST['submit'])){
         $error = "Error: " . $conn->error;
     }
 }
+
+$page_title = "Add Recipe";
+$extra_css = ['add-edit'];
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Recipe</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
 
-<h2>Add Recipe</h2>
+<header>
+    <h1>Add Recipe</h1>
+    <nav>
+        <a href="index.php">Home</a> |
+        <a href="logout.php">Logout</a>
+    </nav>
+</header>
 
-<?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+<main>
+    <h2>Add New Recipe</h2>
 
-<form method="POST" enctype="multipart/form-data">
-    <label>Title</label><br>
-    <input type="text" name="title" required><br><br>
+    <?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
 
-    <label>Ingredients</label><br>
-    <textarea name="ingredients" required></textarea><br><br>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Title</label><br>
+        <input type="text" name="title" required><br><br>
 
-    <label>Instructions</label><br>
-    <textarea name="instructions" required></textarea><br><br>
+        <label>Ingredients</label><br>
+        <textarea name="ingredients" required></textarea><br><br>
 
-    <label>Recipe Image</label><br>
-    <input type="file" name="image" accept="image/*"><br><br>
+        <label>Instructions</label><br>
+        <textarea name="instructions" required></textarea><br><br>
 
-    <button type="submit" name="submit">Add Recipe</button>
-</form>
+        <label>Recipe Image</label><br>
+        <input type="file" name="image" accept="image/*"><br><br>
 
-</body>
-</html>
+        <button type="submit" name="submit">Add Recipe</button>
+    </form>
+</main>
+
+<?php include 'footer.php'; ?>
